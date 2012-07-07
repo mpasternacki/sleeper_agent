@@ -95,7 +95,15 @@ use _gdb_ would look like this:
     >>> sleeper_agent._sleeper_agent_activation.sleeper_agent_state() == sleeper_agent._get_state_info()
     True
     >>> 
-    
+
+Acknowledgements
+----------------
+
+Some of the code and ideas have been inspired by Leonardo Rochael
+Almeida's talk at Europython 2012,
+[https://ep2012.europython.eu/conference/talks/sys_current_frames-take-real-time-x-rays-of-your-software-for-fun-and-performance](`sys._current_frames()`:
+Take real-time X-rays of your software for fun and performance.)
+
 Other ideas
 -----------
 
