@@ -12,8 +12,7 @@ setup(
     license = 'BSD 3 Clause License',
     url = 'https://github.com/mpasternacki/sleeper_agent',
     py_modules = [ 'sleeper_agent' ],
-    ext_modules = [
-        Extension('_sleeper_agent_activation',
-                  sources = ['_sleeper_agent_activation.c'])
-        ],
+    ext_modules = [ Extension('_sleeper_agent_activation',
+                              sources = ['_sleeper_agent_activation.c']) ],
+    tests_require = 'nose',
     )
