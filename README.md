@@ -4,6 +4,8 @@ Sleeper Agent
 The Sleeper Agent is a Python library that, when loaded, allows
 inspecting live state with gdb.
 
+It supports CPython version 2.6 and 2.7.
+
 The library is developed at https://github.com/mpasternacki/sleeper_agent
 
 Its unit tests run automatically at http://travis-ci.org/mpasternacki/sleeper_agent
