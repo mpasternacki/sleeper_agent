@@ -20,14 +20,23 @@ When initializing your Python code, just import the module:
 There is nothing more to do. The sleeper agent is loaded, and it does
 nothing.
 
-When you want to peek into what your code is doing, just attach _gdb_
-to it and activate the agent. Below is the example of activating the
-agent on an _ipython_ session. Note that one of the threads has the
-function `sleeper_agent._get_state_info` in its stack trace - this is
-just appended to this thread's stack, and the information is harmless.
+When you want to peek into what your code is doing, run
+`sleeper_agent_activate PID` to get backtrace of all its
+threads. There are some options avaioable; run
+`sleeper_agent_activate --help` to see the docs.
 
-    $ gdb -p PID
-    (gdb) printf "%s", sleeper_agent_state()
+Below is the example of activating the agent on an _ipython_
+session. Note that one of the threads has the function
+`sleeper_agent._get_state_info` in its stack trace - this is just
+appended to this thread's stack, and the information is
+harmless. There is also some diagnostic info from gdb that I wasn't
+able to suppress - it is also harmless.
+
+    japhy@portinari:sleeper_agent 20% sleeper_agent_activate 18055 
+    Attaching to process 18055.
+    Reading symbols for shared libraries . done
+    Reading symbols for shared libraries ........................................................................... done
+    0x00007fff97396df2 in select$DARWIN_EXTSN ()
     ### Thread 4326428672:
       File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py", line 525, in __bootstrap
         self.__bootstrap_inner()
@@ -57,8 +66,9 @@ just appended to this thread's stack, and the information is harmless.
         line = self.raw_input(prompt)
       File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/IPython/frontend/terminal/interactiveshell.py", line 436, in raw_input
         line = py3compat.str_to_unicode(self.raw_input_original(prompt))
-      File "sleeper_agent.py", line 7, in _get_state_info
+      File "sleeper_agent.py", line 15, in _get_state_info
         for thread_id, frame in sys._current_frames().items() )
+   
 
 Internals
 ---------
@@ -95,6 +105,16 @@ use _gdb_ would look like this:
     >>> sleeper_agent._sleeper_agent_activation.sleeper_agent_state() == sleeper_agent._get_state_info()
     True
     >>> 
+
+You can activate the agent manually by attaching _gdb_ to the process
+and calling out to the `sleeper_agent_state()` C function:
+
+    $ gdb -p PID
+    (gdb) printf "%s", sleeper_agent_state()
+    ### Thread 4326428672:
+      File "/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/threading.py", line 525, in __bootstrap
+        self.__bootstrap_inner()
+    [...]
 
 Acknowledgements
 ----------------

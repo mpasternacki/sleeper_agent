@@ -5,7 +5,7 @@ from setuptools import setup, find_packages, Extension
 
 setup(
     name = 'sleeper_agent',
-    version = '0.0.1',
+    version = '0.0.2',
     description = 'Entry points for live state inspection',
     author = 'Maciej Pasternacki',
     author_email = 'maciej@pasternacki.net',
@@ -14,5 +14,6 @@ setup(
     py_modules = [ 'sleeper_agent' ],
     ext_modules = [ Extension('_sleeper_agent_activation',
                               sources = ['_sleeper_agent_activation.c']) ],
+    scripts = ['sleeper_agent_activate'],
     tests_require = 'nose',
     )

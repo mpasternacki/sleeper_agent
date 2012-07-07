@@ -1,0 +1,28 @@
+#!/usr/bin/env python
+
+from optparse import OptionParser
+from tempfile import NamedTemporaryFile
+import subprocess
+
+parser = OptionParser(usage='usage: %prog [options] pid [pid2 [pid3 [....]]]')
+parser.add_option('-v', '--verbose', action='store_true', dest='verbose',
+                  help="Make gdb more chatty on its own.")
+parser.add_option('--gdb', dest='gdb', default='gdb', metavar='GDB',
+                  action='store', type='string',
+                  help='Specify gdb binary to call')
+
+(opts, args) = parser.parse_args()
+
+stderr = open('/dev/null', 'w') if not opts.verbose else None
+
+for pid in args:
+    pid = int(pid)
+    script = NamedTemporaryFile()
+    commands = []
+    if not opts.verbose:
+        script.write("set verbose off\nset complaints 0\n")
+    script.write("attach %d\n" % pid)
+    script.write('printf "%s", (char*)sleeper_agent_state()\n')
+    script.flush()
+
+    subprocess.check_call([opts.gdb, '-batch', '-x', script.name], stderr=stderr)
