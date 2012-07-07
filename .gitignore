@@ -16,6 +16,7 @@ sdist
 develop-eggs
 .installed.cfg
 MANIFEST
+distribute-*.tar.gz
 
 # Installer logs
 pip-log.txt
