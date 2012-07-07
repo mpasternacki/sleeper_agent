@@ -6,6 +6,8 @@ inspecting live state with gdb.
 
 The library is developed at https://github.com/mpasternacki/sleeper_agent
 
+Its unit tests run automatically at http://travis-ci.org/mpasternacki/sleeper_agent
+
 Usage
 -----
 
