@@ -121,8 +121,7 @@ Acknowledgements
 
 Some of the code and ideas have been inspired by Leonardo Rochael
 Almeida's talk at Europython 2012,
-[https://ep2012.europython.eu/conference/talks/sys_current_frames-take-real-time-x-rays-of-your-software-for-fun-and-performance](`sys._current_frames()`:
-Take real-time X-rays of your software for fun and performance.)
+[`sys._current_frames()`: Take real-time X-rays of your software for fun and performance][1].
 
 Other ideas
 -----------
@@ -137,3 +136,5 @@ Code can be expanded to interactively talk with Python and explore the
 stack levels. This would need storing the stack trace objects, and
 probably also some scripting on the gdb side to have a usable
 interface. Maybe some pieces of pdb code could be reused for that.
+
+[1]: https://ep2012.europython.eu/conference/talks/sys_current_frames-take-real-time-x-rays-of-your-software-for-fun-and-performanc
