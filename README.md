@@ -137,4 +137,4 @@ stack levels. This would need storing the stack trace objects, and
 probably also some scripting on the gdb side to have a usable
 interface. Maybe some pieces of pdb code could be reused for that.
 
-[1]: https://ep2012.europython.eu/conference/talks/sys_current_frames-take-real-time-x-rays-of-your-software-for-fun-and-performanc
+[1]: https://ep2012.europython.eu/conference/talks/sys_current_frames-take-real-time-x-rays-of-your-software-for-fun-and-performance
