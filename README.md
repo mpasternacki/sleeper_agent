@@ -22,7 +22,7 @@ nothing.
 
 When you want to peek into what your code is doing, run
 `sleeper_agent_activate PID` to get backtrace of all its
-threads. There are some options avaioable; run
+threads. There are some options available; run
 `sleeper_agent_activate --help` to see the docs.
 
 Below is the example of activating the agent on an _ipython_
